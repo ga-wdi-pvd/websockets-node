@@ -21,7 +21,24 @@ With the people at your table try to figure out how you might implement real tim
 
 ### HTTP Pitfalls
 
-One common workaround for this problem when under traditional HTTP constraints is to utilize a method called **polling** to make multiple requests on a set interval.
+One common workaround for this problem when under traditional HTTP constraints is to utilize a technique called **polling** to make multiple requests on a set interval.
+
+The resulting code will often look something like this:
+
+
+```js
+setInterval(function(){
+    $.ajax({ url: '/my/api/endpoint', success: function(data){
+        // do something with the data
+    } });
+}, 5000);
+```
+
+**Q**. What is a possible downfall of this approach?
+
+---
+
+> **A**. The server might not have any new data for us. In this case, we'd be producing a lot of network traffic, and request/response cycles overhead, for no purpose.
 
 Simply put, HTTP wasn't designed for real-time, two-way communication.
 
@@ -53,7 +70,7 @@ Robin likes to tell the story of when he first developed a website called:
     - You make a request, and you get something back
   - It's as if to have a conversation over the phone, whenever you wanted to say something you had to hang up and dial again
 
-### Websockets
+### WebSockets
 
 What is it? In essence a different type of model for the communication of a client and a server.
 
@@ -67,7 +84,7 @@ Notable web apps powered by WebSockets:
 
 ### "PUSH"
 
-- Javascript can also use Websockets
+- Javascript can also use WebSockets
   - Instead of having to make a new request every time you want information from the server, it can "push" information to you
   - Opens a connection between two computers and *maintains* it
   - It's as if you just stayed on the phone with the person
@@ -76,29 +93,30 @@ Notable web apps powered by WebSockets:
 
 - Expensive in different ways
   - HTTP, you have to worry about bombarding your server with requests
-  - Websocket, you have to worry about your server having too many connections
+  - WebSocket, you have to worry about your server having too many connections
 
 - Better for different things
   - HTTP is better for sending big packets of data
     - Inefficient for small packets of data, since you send a bunch of data each time as headers
-  - Websocket is better for sending small packets of data really frequently
+  - WebSocket is better for sending small packets of data really frequently
 
 ## Break
 
-## Let's do some Websocketing!
+## Let's do some WebSocketing!
 
 ### Socket.io
 
-- A library for websockets, which we're going to use to make your server a websocket server
-- Notice that you can make Websocket requests in both the front end and the back end:
+- A library for WebSockets, which we're going to use to make your server a WebSocket server
+- Notice that you can make WebSocket requests in both the front end and the back end:
   - http://socket.io/docs/
+- It works on every platform, browser or device, focusing equally on reliability and speed.
 
-### You do
-- Do Socket.io's walkthrough to make a chat app!
+## You do
+- Do Socket.io's walkthrough to make a chat app!  
   - Feeling adventurous? Use handlebars to do your templating
 - http://socket.io/get-started/chat/
-- Solution
-  - https://github.com/ga-dc/socket.io-chat
+
+> [A solution](https://github.com/ga-wdi-exercises/mean-socket-chat/tree/socket-io-solution)
 
 ## Refactoring to use Angular
 
@@ -121,6 +139,8 @@ Notable web apps powered by WebSockets:
 Use `$scope.apply()` to trigger the angular event loop and force our app to re-render after a message is received from the server.
 
 > [Solution](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/3b16e046799b373c73569075769367291614ee4d)
+
+## Break
 
 ## Persisting Data
 
@@ -154,7 +174,8 @@ Use angular to render all persisted messages.
 ## Resources
 
 - [angular-socket-io](https://github.com/btford/angular-socket-io)
-- [Writing an Angular app with socket.io](http://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/)
+- [Writing an Angular app with socket.io](http://www.html5rocks.com/en/tutorials/frameworks/angular-WebSockets/)
 - [Socket.io w/ Express](http://www.programwitherik.com/socket-io-tutorial-with-node-js-and-express/)
 - [Socket.io w/ Node](http://danielnill.com/nodejs-tutorial-with-socketio/)
-- [Websockets w/ socket.io](https://howtonode.org/websockets-socketio)
+- [WebSockets w/ socket.io](https://howtonode.org/websockets-socketio)
+- [Announcing WebSockets](https://www.websocket.org/quantum.html)
