@@ -174,7 +174,7 @@ Use angular to render all persisted messages.
 ## Resources
 
 - [angular-socket-io](https://github.com/btford/angular-socket-io)
-- [Writing an Angular app with socket.io](http://www.html5rocks.com/en/tutorials/frameworks/angular-WebSockets/)
+- [Writing an Angular app with socket.io](http://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/)
 - [Socket.io w/ Express](http://www.programwitherik.com/socket-io-tutorial-with-node-js-and-express/)
 - [Socket.io w/ Node](http://danielnill.com/nodejs-tutorial-with-socketio/)
 - [WebSockets w/ socket.io](https://howtonode.org/websockets-socketio)
