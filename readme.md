@@ -9,7 +9,7 @@
 
 Let's start with a problem: you as a developer take on a project for a client that wants you to create a dashboard to allow individual investors to easily view and track his / her portfolio. Seems simple enough until the client gives you their core requirement: users must be able to see their stocks update in real time!
 
-### Think, Pair, Share
+### Think, Pair, Share (5 min, 0:05)
 
 With the people at your table try to figure out how you might implement real time data fetching:
 
@@ -19,7 +19,7 @@ With the people at your table try to figure out how you might implement real tim
 
 ---
 
-### HTTP Pitfalls
+### HTTP Pitfalls (5 min, 0:10)
 
 One common workaround for this problem when under traditional HTTP constraints is to utilize a technique called **polling** to make multiple requests on a set interval.
 
@@ -100,7 +100,7 @@ Notable web apps powered by WebSockets:
     - Inefficient for small packets of data, since you send a bunch of data each time as headers
   - WebSocket is better for sending small packets of data really frequently
 
-## Break
+## Break (10 min, 1:00)
 
 ## Let's do some WebSocketing!
 
@@ -111,14 +111,14 @@ Notable web apps powered by WebSockets:
   - http://socket.io/docs/
 - It works on every platform, browser or device, focusing equally on reliability and speed.
 
-## You do
+## You do (20 min, 1:20)
 - Do Socket.io's walkthrough to make a chat app!  
   - Feeling adventurous? Use handlebars to do your templating
 - http://socket.io/get-started/chat/
 
 > [A solution](https://github.com/ga-wdi-exercises/mean-socket-chat/tree/socket-io-solution)
 
-## Refactoring to use Angular
+## Refactoring to use Angular (30 min, 1:50)
 
 - Add links to angular CDNs to `index.html`
 ```html
@@ -140,9 +140,9 @@ Use `$scope.apply()` to trigger the angular event loop and force our app to re-r
 
 > [Solution](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/3b16e046799b373c73569075769367291614ee4d)
 
-## Break
+## Break (10 min, 2:00)
 
-## Persisting Data
+## Persisting Data (30 min, 2:30)
 
 - Use `npm` to install `mongoose` and require it in `index.js`
 - Use `mongoose` to create a new model `Message` and define an appropriate schema for a message (keep it simple)
@@ -157,7 +157,7 @@ Use angular to render all persisted messages.
 - In your angular controller, use your newly defined factory to query for all messages and pass that data to the view
 - In the view, render each message
 
-> [Solution](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/8c8214b98d62d4e851c700ba5e53cd056e30e18bt)
+> [Solution](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/8c8214b98d62d4e851c700ba5e53cd056e30e18b)
 
 ## Next Steps
 
