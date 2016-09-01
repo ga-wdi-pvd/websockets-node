@@ -107,7 +107,9 @@ Let's take a few minutes to navigate [here and play some pokemon as a class](htt
 
 ## Let's do some WebSocketing!
 
-### Socket.io
+##### The important part of this exercise is to implement websockets and then try integrate them, as best you can, with what we are learning this week. Parts I & II are most important for this lesson.
+
+### Part I: Socket.io
 
 - A library for WebSockets, which we're going to use to make your server a WebSocket server
 - Notice that you can make WebSocket requests in both the front end and the back end:
@@ -120,7 +122,7 @@ Let's take a few minutes to navigate [here and play some pokemon as a class](htt
 
 > [A solution](https://github.com/ga-wdi-exercises/mean-socket-chat/tree/socket-io-solution)
 
-## Refactoring to use Angular (30 min, 1:50)
+## Part II: Refactoring to use Angular (30 min, 1:50)
 
 Ultimately, we're going to pluck out the DOM manipulation done with jQuery and replace that functionality with Angular functionality. Below are some concrete steps to guide you through this process, however there are some gaps you will need to fill in.
 
@@ -129,6 +131,9 @@ Ultimately, we're going to pluck out the DOM manipulation done with jQuery and r
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
 ```
+
+##### In this step, you do not need to do anything with resource, until you implement data persistence.
+
 - Define an your angular app's initial module
 - Define a new controller
 - Use `socket.on` to listen for any new message, when a new message arrives, pass the data to the view
@@ -146,7 +151,7 @@ Use `$scope.apply()` to trigger the angular event loop and force our app to re-r
 
 ## Break (10 min, 2:00)
 
-## Persisting Data (30 min, 2:30)
+## Part III: Persisting Data (30 min, 2:30)
 
 - Use `npm` to install `mongoose` and require it in `index.js`
 - Use `mongoose` to create a new model `Message` and define an appropriate schema for a message (keep it simple)
