@@ -76,7 +76,7 @@ Notable web apps powered by WebSockets:
 - Twitch
 - Slack
 
-### We do: Websockets Pokemon
+### We do: WDI Plays Pokemon
 
 You may recall, from reddit or elsewhere on the internet, that a version of Pokémon Red was deployed 2 years ago on twitch.tv called "Twitch Plays Pokemon." At its peak, ***121,000 users*** simultaneously entered commands to control a ***single*** character (`ASH` or whatever). If you were not aware of this at the time, you might be able to imagine that the result was exceptionally chaotic. However chaotic, this bizarre social-experiment was made possible by an interface powered by websockets.
 
@@ -122,7 +122,7 @@ Let's take a few minutes to navigate [here and play some pokemon as a class](htt
 
 ## Refactoring to use Angular (30 min, 1:50)
 
-Ultimately, we're going to pluck out the DOM manipulation done with jQuery and replace that functionality with Angular functionality. Below are some concrete steps to guide you through this process, however there are some gaps you will need to fill in. 
+Ultimately, we're going to pluck out the DOM manipulation done with jQuery and replace that functionality with Angular functionality. Below are some concrete steps to guide you through this process, however there are some gaps you will need to fill in.
 
 - Add links to angular CDNs to `index.html`
 ```html
