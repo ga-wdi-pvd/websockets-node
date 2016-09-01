@@ -101,7 +101,7 @@ Let's take a few minutes to navigate [here and play some pokemon as a class](htt
 - Each is best suited for different things
   - HTTP is better for sending big packets of data
     - Inefficient for small packets of data, since you send a bunch of data each time as headers
-  - WebSocket is better for sending small packets of data really frequently
+  - WebSocket is better for very frequently sending small packets of data
 
 ## Break (10 min, 0:50)
 
