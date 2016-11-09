@@ -137,21 +137,21 @@ Don't forget to add links to angular CDNs in `index.html`...
 
 All of your front-end Javascript can go in the `<script>` tag in `index.html` that currently contains the Socket and jQuery code.
 
-#### Define an Angular module
+#### 1. Define an Angular module
 
-#### Bootstrap the Angular app using `ng-app`
+#### 2. Bootstrap the Angular app using `ng-app`
 
-#### Define an Angular controller
+#### 3. Define an Angular controller
 
 It should initialize a `messages` value as an empty array. This will contain all of the incoming chat messages.
 
-#### Link the controller to the app using `ng-controller`
+#### 4. Link the controller to the app using `ng-controller`
 
 Even though we're not using UI Router, we can still link it to our app using the `"controllerName as vm"` syntax.
 
-#### Move `socket.on` into the controller
+#### 5. Move `socket.on` into the controller
 
-#### Update `socket.on` callback function
+#### 6. Update `socket.on` callback function
 
 Instead of using jQuery or Vanilla JS to display messages in the browser, we will use Angular directives and our controller to do the following inside of the `socket.on` callback...
 * Add the new messages to the `messages` variable we defined earlier
@@ -162,7 +162,7 @@ Instead of using jQuery or Vanilla JS to display messages in the browser, we wil
 >
 > Socket events will not trigger a state change in Angular. This means that, without some additional code, our chat app will not update the view when a new message comes in. We can use `$scope.$apply()` to force this state change.
 
-#### Use an Angular directive to display messages in the view
+#### 7. Use an Angular directive to display messages in the view
 
 Add an Angular directive to `index.html` that will render all of our `messages`.
 
@@ -173,7 +173,7 @@ Add an Angular directive to `index.html` that will render all of our `messages`.
 
 </details>
 
-#### Update form submit
+#### 8. Update form submit
 
 Add an Angular directive to the form in `index.html` that triggers a yet-to-be-defined controller method -- let's call it `sendMessage` -- that will handle submitting messages to our server.
 
@@ -193,7 +193,7 @@ Use another Angular directive that will allow bind whatever value is currently i
 
 </details>
 
-#### Add `sendMessage` method to controller
+#### 9. Add `sendMessage` method to controller
 
 Create a `sendMessage` method in the controller. Then, move the `socket.emit` line of code into that method.
 
