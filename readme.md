@@ -19,8 +19,6 @@ With the people at your table try to figure out how you might implement real tim
 * Brainstorm a few technical approaches
 * Identify any potential downsides to these approaches
 
-<!-- AM: Answers? -->
-
 ## HTTP Pitfalls (10 minutes / 0:20)
 
 One common workaround for this problem when under traditional HTTP constraints is to utilize a technique called **polling** to make multiple requests on a set interval.
@@ -37,7 +35,8 @@ setInterval(function(){
 <details>
   <summary><strong>What is a possible downfall of this approach?</strong></summary>
 
-  > AM: Add answers
+  * There may not be any new data to retrieve
+  * It's expensive to do this over and over again
 
 </details>
 
@@ -45,23 +44,22 @@ Simply put: HTTP wasn't designed for real-time, two-way communication.
 
 ### Beware of the Polls: A Cautionary Tale
 
-Robin -- a former WDI instructor -- likes to tell the story of when he first developed a website called [INeedAPrompt.com](http://www.INeedAPrompt.com) which generates writing prompts designed to spur creative writing and break through writer's block. One day, it was posted to reddit and it caught a lot of attention, which made Robin happy. Everyone lived happily ever after. That is, until Robin got an e-mail from his hosting provider at 1:12AM...
+Robin -- a former WDI instructor -- likes to tell the story of when he first developed a website called [INeedAPrompt.com](http://www.ineedaprompt.com) which generates writing prompts designed to spur creative writing and break through writer's block. One day, it was posted to Reddit and it caught a lot of attention, which made Robin happy. Everyone lived happily ever after. That is, until Robin got an e-mail from his hosting provider at 1:12AM...
 
 > System administration was forced to suspend your site in an emergency to prevent server and system overloads.
 >
-> The suspension was placed due to an extremely large amount of traffic to ineedaprompt.com/counter.txt
+> The suspension was placed due to an extremely large amount of traffic to `ineedaprompt.com/counter.txt`
 >
 > At the time of suspension, we were seeing over 1.86 million hits.
 
-
 Robin's website has a click counter that counts the number of prompts generated.
-* Originally, it was making an AJAX request every second that was POSTing to a script, telling it to update a `counter.txt` file, and then showing the new number of clicks
+* Originally, it was making an AJAX request every second that was POSTing to a script, telling it to update a `counter.txt` file and then show the new number of clicks
 * That's 3600 extra requests per hour **per user**!
-* Fixed by having the clicks update only when you refresh the page.
+* Solution: update the click counter only when you refresh the page
 
 ## Comparing WebSockets & HTTP (20 minutes / 0:40)
 
-### HTTP & "PULL"
+### HTTP & Pulling
 
 AJAX uses HTTP.
 * You "pull" information from the server (i.e., you make a request and you get something back)
@@ -87,10 +85,7 @@ Let's take a few minutes to navigate [here and play some pokemon as a class](htt
 * How many 'states' of the game are there?
 * While this is sort of an experiment with the absurd, can you infer from this example any drawbacks websockets might have?
 
-<!-- AM: Is this the best demo of this concept? -->
-<!-- AM: Is there a better link that the socket.io address? -->
-
-### PUSH
+### WebSockets & Pushing
 
 We can use WebSockets with Javascript
 - Our code opens a connection between two computers and maintains it
@@ -101,7 +96,7 @@ We can use WebSockets with Javascript
 
 Each is expensive in different ways
 * HTTP, you have to worry about bombarding your server with requests
-* WebSocket, you have to worry about your server having too many connections
+* WebSockets, you have to worry about your server having too many connections
 
 Each is best suited for different things
 * HTTP is better for sending big packets of data, but inefficient for small packets of data since you send a bunch of data each time as headers
@@ -246,14 +241,7 @@ Use angular to render all persisted messages.
 - [WebSockets w/ Socket.io](https://howtonode.org/websockets-socketio)
 - [Announcing WebSockets](https://www.websocket.org/quantum.html)
 
-<!-- TODO -->
-  <!-- Include bit about adding public directory for front-end JS files -->
-  <!-- Note about express + app at the top of index.js -->
-  <!-- Note about bootstrapping ng-app -->
-  <!-- Walk through adding controller w/o ui-router -->
-  <!-- $scope.$apply() when updating after message receipt -->
-    <!-- Angular doesn't know that an event has happened - need to tell it to re-render -->
-  <!-- ng-repeat for messages with vm.messages -->
-  <!-- Framing about not forcing Angular just to make it hard - good to know how to do this in the context of a front-end framework -->
-  <!-- Add testing notes (i.e., now you should be able to do/see this) -->
-  <!-- Add note about already seeing this in action with Firebase -->
+
+<!-- Framing about not forcing Angular just to make it hard - good to know how to do this in the context of a front-end framework -->
+<!-- Add testing notes (i.e., now you should be able to do/see this) -->
+<!-- Add note about already seeing this in action with Firebase -->
