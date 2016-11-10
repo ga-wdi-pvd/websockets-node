@@ -118,7 +118,79 @@ Socket.io is a library for WebSockets, which we'll be using to create a WebSocke
 
 [Do Socket.io's walkthrough to make a chat app.](http://socket.io/get-started/chat/)
 
-> [Solution](https://github.com/ga-wdi-exercises/mean-socket-chat/tree/socket-io-solution)
+<details>
+  <summary><strong>Solution...</strong></summary>
+
+  ```html
+  <!-- index.html -->
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Socket.IO chat</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+      </style>
+    </head>
+    <body>
+      <ul id="messages"></ul>
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+
+    var socket = io()
+    $('form').submit(evt => {
+      evt.preventDefault()
+      socket.emit('chat message', $('#m').val())
+      $('#m').val('')
+    })
+
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    })
+
+    </script>
+  </html>
+
+  ```
+
+  ```js
+  // index.js
+
+  var app = require('express')()
+  var http = require('http').Server(app)
+  var io = require('socket.io')(http)
+
+  app.get('/', function(req, res){
+    res.sendFile(__dirname + "/index.html")
+  })
+
+  io.on('connection', function(socket){
+    socket.on('chat message', function(msg){
+      io.emit('chat message', msg);
+    });
+  });
+
+  http.listen(3000, function(){
+    console.log('listening on *:3000')
+  })
+
+  ```
+
+</details>
+
+> [Another solution...](https://github.com/ga-wdi-exercises/mean-socket-chat/tree/socket-io-solution)
 
 ## Break (10 minutes / 1:40)
 
@@ -201,7 +273,70 @@ Update `socket.emit` so that it sends whatever message the user has entered into
 
 Also, once a message is submitted through Socket.io, the input should be cleared so that a new message can be sent.
 
-> [A solution](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/3b16e046799b373c73569075769367291614ee4d)
+<details>
+  <summary><strong>Solution...</strong></summary>
+
+  ```html
+  <!DOCTYPE html>
+  <html ng-app="app">
+    <head>
+      <title>Socket.IO chat</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+      </style>
+    </head>
+    <body ng-controller="controller as vm">
+      <ul ng-repeat="msg in vm.messages" id="messages">
+        <li>{{ msg }}</li>
+      </ul>
+      <form ng-submit="vm.sendMessage()">
+        <input ng-model="vm.message" id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+    <script>
+
+    let socket = io()
+
+    angular
+      .module("app", [])
+      .controller("controller", [
+        "$scope",
+        ControllerFunction
+      ])
+
+    function ControllerFunction($scope){
+      let vm = this
+      vm.messages = []
+
+      vm.sendMessage = evt => {
+        socket.emit("chat message", vm.message)
+        vm.message = ""
+      }
+
+      socket.on('chat message', msg => {
+        vm.messages.push(msg)
+        $scope.$apply()
+      })
+    }
+
+    </script>
+  </html>
+
+  ```
+
+</details>
+
+> [Another solution...](https://github.com/ga-wdi-exercises/mean-socket-chat/commit/3b16e046799b373c73569075769367291614ee4d)
 
 ## (Bonus) Part III: Persisting Data
 
@@ -209,7 +344,7 @@ Also, once a message is submitted through Socket.io, the input should be cleared
 * Use `mongoose` to create a new model `Message` and define an appropriate schema for a message
 * Whenever a new message is sent to the server from the client, persist it
 
-#### Bonus
+#### More Bonuses
 
 Use angular to render all persisted messages.
 * In your server, define a route for `/api/messages` that renders all your app's messages as `JSON`
@@ -242,6 +377,5 @@ Use angular to render all persisted messages.
 - [Announcing WebSockets](https://www.websocket.org/quantum.html)
 
 
-<!-- Framing about not forcing Angular just to make it hard - good to know how to do this in the context of a front-end framework -->
 <!-- Add testing notes (i.e., now you should be able to do/see this) -->
 <!-- Add note about already seeing this in action with Firebase -->
