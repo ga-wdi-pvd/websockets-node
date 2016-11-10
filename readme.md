@@ -108,7 +108,7 @@ Each is best suited for different things
 
 > The important part of this exercise is to (1) implement WebSockets and (2) integrate it with what we have learned over the past several weeks. Parts I & II are most important for this lesson.
 
-### Socket.io Walkthrough (40 minutes / 1:30)
+## Part I: Socket.io Walkthrough (40 minutes / 1:30)
 
 > 30 minutes exercise. 10 minutes review.
 
