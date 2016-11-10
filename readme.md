@@ -53,13 +53,13 @@ Robin -- a former WDI instructor -- likes to tell the story of when he first dev
 > At the time of suspension, we were seeing over 1.86 million hits.
 
 Robin's website has a click counter that counts the number of prompts generated.
-* Originally, it was making an AJAX request every second that was POSTing to a script, telling it to update a `counter.txt` file and then show the new number of clicks
+* Originally, it was making an AJAX request **every second** checking to see if a counter value on the server had been updated since the page was loaded. This counter is incremented every time a user requests a new prompt.
 * That's 3600 extra requests per hour **per user**!
 * Solution: update the click counter only when you refresh the page
 
 ## Comparing WebSockets & HTTP (20 minutes / 0:40)
 
-### HTTP & Pulling
+### Pulling
 
 AJAX uses HTTP.
 * You "pull" information from the server (i.e., you make a request and you get something back)
@@ -75,22 +75,25 @@ By utilizing WebSockets, a client can open up a connection to a server that allo
 
 Twitch and Slack are a couple of the notable web apps out there that are powered by WebSockets.
 
-### We Do: WDI Plays Pokemon
-
-> 5 minutes exercise.
-
-You may recall that a version of Pokémon Red was deployed 2 years ago on twitch.tv called "[Twitch Plays Pokemon](https://www.twitch.tv/twitchplayspokemon)." At its peak, 121,000 users simultaneously entered commands to control a single character. As you can image, the result was exceptionally chaotic. Nevertheless, this bizarre social-experiment was made possible by a WebSockets-powered interface.
-
-Let's take a few minutes to navigate [here and play some pokemon as a class](http://socket.io/demos/weplay/). While playing, consider the following questions...
-* How many 'states' of the game are there?
-* While this is sort of an experiment with the absurd, can you infer from this example any drawbacks websockets might have?
-
-### WebSockets & Pushing
+### Pushing
 
 We can use WebSockets with Javascript
 - Our code opens a connection between two computers and maintains it
 - Instead of having to make a new request every time you want information from the server, it can "push" information to you via this open connection
 - It's as if you were on the phone instead of using walkie-talkies
+
+### We Do: WDI Plays BrowserQuest (10 minutes / 0:10)
+
+> 7 minutes exercise. 3 minutes review.
+
+Mozilla created a very cool game called [BrowserQuest](http://browserquest.mozilla.org/) using HTML canvas and WebSockets. You're going to play it for the next 7 minutes.
+
+While playing, consider the following questions...
+* What pieces of information are being relayed between the client and server?
+* How often is information sent from the client to server or vice-versa?
+* What are some problems the developers who created this game might have had to consider when building it?
+
+> Fun fact: [the game is open source!](https://github.com/mozilla/BrowserQuest)
 
 ### Pros and Cons: HTTP vs. WebSockets
 
@@ -116,7 +119,9 @@ Socket.io is a library for WebSockets, which we'll be using to create a WebSocke
 - You can make WebSocket requests in both the front end and the back end ([documentation](http://socket.io/docs/))
 - It works on every platform, browser or device, focusing equally on reliability and speed
 
-[Do Socket.io's walkthrough to make a chat app.](http://socket.io/get-started/chat/)
+#### [Do Socket.io's walkthrough to make a chat app.](http://socket.io/get-started/chat/)
+
+As a first step, however, instead of manually creating the `package.json` file as they suggest, go ahead and run `$ npm init -y`
 
 <details>
   <summary><strong>Solution...</strong></summary>
@@ -226,7 +231,7 @@ Even though we're not using UI Router, we can still link it to our app using the
 #### 6. Update `socket.on` callback function
 
 Instead of using jQuery or Vanilla JS to display messages in the browser, we will use Angular directives and our controller to do the following inside of the `socket.on` callback...
-* Add the new messages to the `messages` variable we defined earlier
+* Add the new message to the `messages` variable we defined earlier
 * Add `$scope.$apply()` at the end of the callback.
 * In order to use `$scope.$apply()`, we need to inject `"$scope"` as a dependency to our controller and pass in `$scope` as an argument to our controller function
 
@@ -264,6 +269,8 @@ Use another Angular directive that will allow bind whatever value is currently i
   > Use `ng-model`
 
 </details>
+
+You should also remove the `action` attribute from the form. That will cause you problems later on.
 
 #### 9. Add `sendMessage` method to controller
 
