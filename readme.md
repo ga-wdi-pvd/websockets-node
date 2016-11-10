@@ -82,7 +82,7 @@ We can use WebSockets with Javascript
 - Instead of having to make a new request every time you want information from the server, it can "push" information to you via this open connection
 - It's as if you were on the phone instead of using walkie-talkies
 
-### We Do: WDI Plays BrowserQuest (10 minutes / 0:10)
+### We Do: WDI Plays BrowserQuest
 
 > 7 minutes exercise. 3 minutes review.
 
