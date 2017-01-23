@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    <!-- CSS -->
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -12,9 +19,22 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
     </style>
+
+    <!-- SOCKET.IO -->
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
     <script>
       var socket = io();
+
+      $('form').submit(() => {
+        //on form submit emit the input box value
+        //'chat message' is our custom definede mit event
+        // this will be used for our io event listener
+        // on the backend
+        socket.emit('chat message', $('#m').val());
+        //clear m input box
+        $('#m').val('');
+        return false;
+      });
     </script>
   </head>
   <body>
