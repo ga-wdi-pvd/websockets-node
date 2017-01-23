@@ -1,0 +1,30 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "First app using web sockets",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ga-wdi-pvd/websockets-node.git"
+  },
+  "keywords": [
+    "websockets",
+    "socket.io",
+    "GA",
+    "WDI"
+  ],
+  "author": "General Assembly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ga-wdi-pvd/websockets-node/issues"
+  },
+  "homepage": "https://github.com/ga-wdi-pvd/websockets-node#readme"
+}

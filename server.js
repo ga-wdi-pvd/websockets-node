@@ -1,9 +1,10 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
   res.send('<h1>Hello world</h1>');
 });
 
-app.listen(3000, function(){
+app.listen(3000, () => {
   console.log('listening on *:3000');
 });
