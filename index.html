@@ -25,15 +25,19 @@
     <script>
       var socket = io();
 
-      $('form').submit(() => {
-        //on form submit emit the input box value
-        //'chat message' is our custom definede mit event
-        // this will be used for our io event listener
-        // on the backend
-        socket.emit('chat message', $('#m').val());
-        //clear m input box
-        $('#m').val('');
-        return false;
+      // make sure to put your event listeners in a document onready
+      $(document).ready(function(){
+
+        $('form').submit(function() {
+          //on form submit emit the input box value
+          //'chat message' is our custom definede mit event
+          // this will be used for our io event listener
+          // on the backend
+          socket.emit('chat message', $('#m').val());
+          //clear m input box
+          $('#m').val('');
+          return false;
+        });
       });
     </script>
   </head>

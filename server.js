@@ -15,8 +15,15 @@ io.on('connection', (socket) => {
   console.log('A connection opened');
   // socket has an event listener that listens for
   // a disconnect
-  socket.on('disconnect', function(){
+  socket.on('disconnect', () => {
     console.log('user disconnected');
+  });
+
+  // add event listener on the socket that hears
+  // our chat message we emitted from the client
+  socket.on('chat message', (msg) => {
+    // msg is the data we received from the emitter
+    console.log('message: ' + msg);
   });
 });
 
