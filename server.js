@@ -23,7 +23,9 @@ io.on('connection', (socket) => {
   // our chat message we emitted from the client
   socket.on('chat message', (msg) => {
     // msg is the data we received from the emitter
-    console.log('message: ' + msg);
+    //io.emit will send that data back to any clients
+    //listening for the 'chat message' event
+    io.emit('chat message', msg);
   });
 });
 
