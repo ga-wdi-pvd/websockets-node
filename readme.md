@@ -128,6 +128,8 @@ $ npm install
 $ nodemon server.js
 ```
 
+***WE WILL START AT 'INTEGRATING SOCKET.IO'**
+
 <details>
   <summary><strong>Solution...</strong></summary>
 
