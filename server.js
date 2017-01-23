@@ -13,6 +13,11 @@ app.get('/', (req, res) => {
 // the callback received a socket as a response object
 io.on('connection', (socket) => {
   console.log('A connection opened');
+  // socket has an event listener that listens for
+  // a disconnect
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
 });
 
 http.listen(3000, () => {
