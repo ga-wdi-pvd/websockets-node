@@ -121,7 +121,12 @@ Socket.io is a library for WebSockets, which we'll be using to create a WebSocke
 
 #### [Do Socket.io's walkthrough to make a chat app.](http://socket.io/get-started/chat/)
 
-As a first step, however, instead of manually creating the `package.json` file as they suggest, go ahead and run `$ npm init -y`
+```bash
+$ git clone git@github.com:ga-wdi-pvd/websockets-node.git
+$ cd websockets-node/
+$ npm install
+$ nodemon server.js
+```
 
 <details>
   <summary><strong>Solution...</strong></summary>
